@@ -1,0 +1,25 @@
+[package]
+name = "debridge-u256"
+version = "1.0.0"
+edition = "2021"
+
+[features]
+default = ["jsonschema"]
+jsonschema = ["dep:schemars"]
+rand = ["dep:rand"]
+
+[dependencies]
+sha3 = "0.10"
+borsh = "0.9.1"
+log = "0.4.14"
+hex = "0.4.3"
+serde = { version = "1.0", features = ["derive"] }
+num-traits = "0.2.14"
+num-integer = "0.1.44"
+zkp-u256 = "0.2.1"
+rand = { version = "0.7", optional = true } # use old rand for compatibility with libsecp256k1 in crypto
+schemars = { version = "0.8.11", optional = true }
+
+[dev-dependencies]
+serde_json = "1.0"
+simplelog = "0.11"
