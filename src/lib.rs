@@ -31,6 +31,12 @@ impl BorshDeserialize for U256 {
             buf,
         )?))
     }
+
+    fn deserialize_reader<R: io::Read>(reader: &mut R) -> io::Result<Self> {
+        Ok(Self::from(
+            &<[u8; 32] as BorshDeserialize>::deserialize_reader(reader)?,
+        ))
+    }
 }
 
 #[cfg(feature = "jsonschema")]

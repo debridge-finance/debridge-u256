@@ -1,6 +1,6 @@
 [package]
 name = "debridge-u256"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 
 [features]
@@ -10,7 +10,7 @@ rand = ["dep:rand"]
 
 [dependencies]
 sha3 = "0.10"
-borsh = "0.9.1"
+borsh = "0.10.3"
 log = "0.4.14"
 hex = "0.4.3"
 serde = { version = "1.0", features = ["derive"] }
