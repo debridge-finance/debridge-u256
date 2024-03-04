@@ -10,6 +10,10 @@ pub use zkp_u256::{Binary, DivRem};
 
 #[derive(Clone, Default, PartialEq, Eq, Deserialize, Serialize, Debug, Hash)]
 pub struct U256(zkp_u256::U256);
+#[cfg(feature = "anchor")]
+impl anchor_lang::Space for U256 {
+    const INIT_SPACE: usize = std::mem::size_of::<Self>();
+}
 
 impl fmt::Display for U256 {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {

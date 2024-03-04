@@ -1,12 +1,13 @@
 [package]
 name = "debridge-u256"
-version = "1.0.1"
+version = "1.0.2"
 edition = "2021"
 
 [features]
 default = ["jsonschema"]
 jsonschema = ["dep:schemars"]
 rand = ["dep:rand"]
+anchor = ["dep:anchor-lang"]
 
 [dependencies]
 sha3 = "0.10"
@@ -19,6 +20,7 @@ num-integer = "0.1.44"
 zkp-u256 = "0.2.1"
 rand = { version = "0.7", optional = true } # use old rand for compatibility with libsecp256k1 in crypto
 schemars = { version = "0.8.11", optional = true }
+anchor-lang = { version = "0", optional = true }
 
 [dev-dependencies]
 serde_json = "1.0"
