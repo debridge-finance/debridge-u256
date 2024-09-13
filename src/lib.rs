@@ -351,7 +351,12 @@ mod u256_tests {
 
 /// Offset of decimals
 /// Due to different types for solana and evm networks, you have to shift decimals
-#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, BorshSerialize, BorshDeserialize)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+#[cfg_attr(
+    feature = "anchor",
+    derive(anchor_lang::AnchorSerialize, anchor_lang::AnchorDeserialize)
+)]
+#[cfg_attr(not(feature = "anchor"), derive(BorshSerialize, BorshDeserialize))]
 pub struct Denominator {
     value: u8,
 }
