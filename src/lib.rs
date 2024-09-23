@@ -15,6 +15,33 @@ impl anchor_lang::Space for U256 {
     const INIT_SPACE: usize = std::mem::size_of::<Self>();
 }
 
+#[cfg(feature = "anchor")]
+impl anchor_lang::idl::build::IdlBuild for U256 {
+    fn create_type() -> Option<anchor_lang::idl::types::IdlTypeDef> {
+        Some(anchor_lang::idl::types::IdlTypeDef {
+            name: Self::get_full_path(),
+            docs: vec![],
+            serialization: anchor_lang::idl::types::IdlSerialization::default(),
+            repr: None,
+            generics: vec![],
+            ty: anchor_lang::idl::types::IdlTypeDefTy::Struct {
+                fields: Some(anchor_lang::idl::types::IdlDefinedFields::Tuple(vec![
+                    anchor_lang::idl::types::IdlType::Array(
+                        Box::new(anchor_lang::idl::types::IdlType::U64),
+                        anchor_lang::idl::types::IdlArrayLen::Value(4),
+                    ),
+                ])),
+            },
+        })
+    }
+    fn insert_types(
+        _: &mut std::collections::BTreeMap<String, anchor_lang::idl::types::IdlTypeDef>,
+    ) {}
+    fn get_full_path() -> String {
+        format!("{}::{}", module_path!(), stringify!(U256))
+    }
+}
+
 impl fmt::Display for U256 {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.write_str(&self.to_hex())?;
