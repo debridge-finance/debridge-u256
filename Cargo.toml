@@ -6,7 +6,7 @@ edition = "2021"
 [features]
 default = ["jsonschema"]
 jsonschema = ["dep:schemars"]
-rand = ["dep:rand"]
+rand = ["dep:rand", "zkp-u256/rand"]
 anchor = ["dep:anchor-lang", "anchor-lang/idl-build"]
 
 [dependencies]
@@ -17,7 +17,7 @@ hex = "0.4.3"
 serde = { version = "1.0", features = ["derive"] }
 num-traits = "0.2.14"
 num-integer = "0.1.44"
-zkp-u256 = "0.2.1"
+zkp-u256 = { version = "0.2.1", default-features = false, features = ["serde"]}
 rand = { version = "0.7", optional = true } # use old rand for compatibility with libsecp256k1 in crypto
 schemars = { version = "0.8.11", optional = true }
 anchor-lang = { version = "0.30.1", optional = true }
